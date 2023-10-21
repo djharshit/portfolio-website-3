@@ -135,14 +135,20 @@ function onGooglePayLoaded() {
  * @see {@link https://developers.google.com/pay/api/web/guides/brand-guidelines|Google Pay brand guidelines}
  */
 function addGooglePayButton() {
-  const paymentsClient = getGooglePaymentsClient();
-  const button = paymentsClient.createButton({
-    onClick: onGooglePaymentButtonClicked,
-  });
+  // const paymentsClient = getGooglePaymentsClient();
+  // const button = paymentsClient.createButton({
+  //   onClick: onGooglePaymentButtonClicked,
+  // });
 
-  document.getElementById("pay-1").appendChild(button);
-//   document.getElementById("pay-2").appendChild(button);
-//   document.getElementById("pay-3").appendChild(button);
+  const elements = document.getElementsByClassName("pay");
+  for (let i = 0; i < elements.length; i++) {
+    const paymentsClient = getGooglePaymentsClient();
+    const button = paymentsClient.createButton({
+      onClick: onGooglePaymentButtonClicked,
+    });
+    elements[i].appendChild(button);
+  }
+
 }
 
 
